@@ -1,0 +1,225 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{latexsym, amssymb, amscd, amsthm, amsxtra, amsmath,amsthm }
+\usepackage{graphics, graphicx, color}
+\usepackage{natbib}
+\usepackage{ifpdf}
+\usepackage[format=hang,indention=-1cm,small]{caption}
+\usepackage[caption=false]{subfig}
+\usepackage{multirow}
+\usepackage{kotex}
+\usepackage{geometry}
+\geometry{
+	a4paper,
+	left=30mm,
+	right=30mm,
+	top=30mm,
+	bottom=30mm
+}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=blue,
+    citecolor=blue,
+    pdfpagemode=FullScreen,
+    }
+\usepackage{indentfirst}
+
+
+\title{2022 IDL Project Proposal \\ \vspace{0.5cm} \large \textbf{Microsoft Teams to Cloud Speech Enhancement}}
+\author{Brian Lim, Chanwoo Kim, Taeyoung Chang, Urvish Takker \\ Carnegie Mellon University}
+\date{\today}
+\date{}
+% MATH -----------------------------------------------------------
+\newcommand{\norm}[1]{\left\Vert#1\right\Vert}
+\newcommand{\abs}[1]{\left\vert#1\right\vert}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\Real}{\mathbb R}
+\newcommand{\Nat}{\mathbb N}
+\newcommand{\Int}{\mathbb Z}
+\newcommand{\Complex}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\To}{\longrightarrow}
+
+\def\av{\mathbf a}
+\def\bv{\mathbf b}
+\def\cv{\mathbf c}
+\def\dv{\mathbf d}
+\def\ev{\mathbf e}
+\def\fv{\mathbf f}
+\def\gv{\mathbf g}
+\def\hv{\mathbf h}
+\def\iv{\mathbf i}
+\def\jv{\mathbf j}
+\def\gv{\mathbf g}
+\def\kv{\mathbf k}
+\def\lv{\mathbf l}
+\def\mv{\mathbf m}
+\def\nv{\mathbf n}
+\def\ov{\mathbf o}
+\def\pv{\mathbf p}
+\def\qv{\mathbf q}
+\def\rv{\mathbf r}
+\def\sv{\mathbf s}
+\def\tv{\mathbf t}
+\def\uv{\mathbf u}
+\def\vv{\mathbf v}
+\def\wv{\mathbf w}
+\def\xv{\mathbf x}
+\def\yv{\mathbf y}
+\def\zv{\mathbf z}
+
+\def\Av{\mathbf A}
+\def\Bv{\mathbf B}
+\def\Cv{\mathbf C}
+\def\Dv{\mathbf D}
+\def\Ev{\mathbf E}
+\def\Fv{\mathbf F}
+\def\Gv{\mathbf G}
+\def\Hv{\mathbf H}
+\def\Iv{\mathbf I}
+\def\Jv{\mathbf J}
+\def\Kv{\mathbf K}
+\def\Lv{\mathbf L}
+\def\Mv{\mathbf M}
+\def\Nv{\mathbf N}
+\def\Ov{\mathbf O}
+\def\Pv{\mathbf P}
+\def\Qv{\mathbf Q}
+\def\Rv{\mathbf R}
+\def\Sv{\mathbf S}
+\def\Tv{\mathbf T}
+\def\Uv{\mathbf U}
+\def\Vv{\mathbf V}
+\def\Wv{\mathbf W}
+\def\Xv{\mathbf X}
+\def\Yv{\mathbf Y}
+\def\Zv{\mathbf Z}
+
+\newcommand{\alphav}{\mbox{\boldmath{$\alpha$}}}
+\newcommand{\betav}{\mbox{\boldmath{$\beta$}}}
+\newcommand{\gammav}{\mbox{\boldmath{$\gamma$}}}
+\newcommand{\deltav}{\mbox{\boldmath{$\delta$}}}
+\newcommand{\epsilonv}{\mbox{\boldmath{$\epsilon$}}}
+\newcommand{\zetav}{\mbox{\boldmath$\zeta$}}
+\newcommand{\etav}{\mbox{\boldmath{$\eta$}}}
+\newcommand{\iotav}{\mbox{\boldmath{$\iota$}}}
+\newcommand{\kappav}{\mbox{\boldmath{$\kappa$}}}
+\newcommand{\lambdav}{\mbox{\boldmath{$\lambda$}}}
+\newcommand{\muv}{\mbox{\boldmath{$\mu$}}}
+\newcommand{\nuv}{\mbox{\boldmath{$\nu$}}}
+\newcommand{\xiv}{\mbox{\boldmath{$\xi$}}}
+\newcommand{\omicronv}{\mbox{\boldmath{$\omicron$}}}
+\newcommand{\piv}{\mbox{\boldmath{$\pi$}}}
+\newcommand{\rhov}{\mbox{\boldmath{$\rho$}}}
+\newcommand{\sigmav}{\mbox{\boldmath{$\sigma$}}}
+\newcommand{\tauv}{\mbox{\boldmath{$\tau$}}}
+\newcommand{\upsilonv}{\mbox{\boldmath{$\upsilon$}}}
+\newcommand{\phiv}{\mbox{\boldmath{$\phi$}}}
+\newcommand{\varphiv}{\mbox{\boldmath{$\varphi$}}}
+\newcommand{\chiv}{\mbox{\boldmath{$\chi$}}}
+\newcommand{\psiv}{\mbox{\boldmath{$\psi$}}}
+\newcommand{\omegav}{\mbox{\boldmath{$\omega$}}}
+\newcommand{\Sigmav}{\mbox{\boldmath{$\Sigma$}}}
+\newcommand{\Lambdav}{\mbox{\boldmath{$\Lambda$}}}
+\newcommand{\Deltav}{\mbox{\boldmath{$\Delta$}}}
+
+\newcommand{\Ac}{\mathcal{A}}
+\newcommand{\Bc}{\mathcal{B}}
+\newcommand{\Cc}{\mathcal{C}}
+\newcommand{\Dc}{\mathcal{D}}
+\newcommand{\Ec}{\mathcal{E}}
+\newcommand{\Fc}{\mathcal{F}}
+\newcommand{\Gc}{\mathcal{G}}
+\newcommand{\Hc}{\mathcal{H}}
+\newcommand{\Ic}{\mathcal{I}}
+\newcommand{\Jc}{\mathcal{J}}
+\newcommand{\Kc}{\mathcal{K}}
+\newcommand{\Lc}{\mathcal{L}}
+\newcommand{\Mc}{\mathcal{M}}
+\newcommand{\Nc}{\mathcal{N}}
+\newcommand{\Oc}{\mathcal{O}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\Qc}{\mathcal{Q}}
+\newcommand{\Rc}{\mathcal{R}}
+\newcommand{\Sc}{\mathcal{S}}
+\newcommand{\Tc}{\mathcal{T}}
+\newcommand{\Uc}{\mathcal{U}}
+\newcommand{\Vc}{\mathcal{V}}
+\newcommand{\Wc}{\mathcal{W}}
+\newcommand{\Xc}{\mathcal{X}}
+\newcommand{\Yc}{\mathcal{Y}}
+\newcommand{\Zc}{\mathcal{Z}}
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\maketitle
+
+\begin{abstract}
+    The proposed model is intended to promote collaborative research in real-time Speech Enhancement aimed to maximize the subjective (perceptual) quality of the enhanced speech. In the past we have seen that various models perform well on the synthetic data, however, they tend to underperform in real-time applications. To analyze the efficacy of our proposed model, we will use metrics that tend to be better predictors of real-time performance over conventional objective metrics. We will use a custom dataset generated using a large clean speech and noise corpus for training the proposed noise suppression model and representative of real-world noisy data. The paper would contain descriptions of the dataset, proposed model, and results of the test on the proposed model and metrics.
+\end{abstract}
+
+
+\section{Introduction}
+Speech enhancement has become one of the most important technologies in a remote working environment. Meetings done through video conferencing platforms such as Zoom or Microsoft Teams are more prevalent than ever, and extracting clean speech from a noisy environment in real time is becoming more important to avoid interruptions during a conference. However, solely extracting clean speech in real-time is a difficult task, especially with imperfect information on the level of noise in the future. Furthermore, suppressing noise can also lead to the suppression of clean speech as well, removing essential parts of a conversation. Thus, when essential signals are lost from the speech data, our speech recognition and other cognitive models tend to underperform. Thus, we want to build a model which would perform better in real time. This would require thoughtful dataset selection, and evaluating models on critical metrics. Our goal is to develop a model to surpass the state-of-art models used for noise removal or reduction in the present times.
+
+
+\section{Related Works}
+
+\subsection{Demucs}
+
+The authors of this paper(\cite{Demucs}) utilize convolutional and recurrent neural networks to separate noise from clean speech in waveform audio. By processing corrupted audio through convolutional encoder-decoder architecture with skip-connections they propose that clean speech can be extracted from latent representations of an input audio. Furthermore, to account for sequential information of the audio a recurrent neural network is injected between encoders and decoders, which the decoder uses to reconstruct clean speech. To account for real time noise suppression the authors accumulate standard deviation of an audio only up to current position for normalization, with paddings to account for a 3ms lookahead.
+
+\subsection{FullSubNet}
+
+This paper(\cite{fullsubnet}) introduces a full-band and sub-band fusion model, FullSubNet, to enhance single-channel speech by suppressing noise. Original full-band model has its strength in finding global spectral patterns and cross-band dependencies. On the other hand, the sub-band model has its strength in finding local spectral patterns and stationarity, which is an important factor that distinguishes noises from clean speech. Since both models have unique advantages, FullSubNet stacks both models to take both advantages. The whole speech spectrogram goes through a full-band model, and the output concatenated with the sub-band unit becomes the input of the sub-band model. Hence the sub-band can find local patterns with complementary information from the full-band model. 
+
+\subsection{GeMAPS}
+
+This paper(\cite{GeMAPS}) suggests a minimalistic set of standard acoustic parameters such as Pitch, Jitter, Shimer, Loudness, Harmonics-to-Noise Ratio,and Harmonic difference. It is selected based on three criteria, which are the potential to discern physiological changes in voice production, the success in the past literature, and the theoretical importance. Through the experiments, the paper argues that unlike the large brute-forced feature sets, the minimalistic parameter sets might reduce the danger of damaging generalization capabilities to unseen data. The authors proposed these parameters as the common baseline for evaluating future research.
+
+
+\section{Dataset}
+
+We will use the dataset from the github repository of \href{https://github.com/microsoft/DNS-Challenge}{DNS Challenge 2020}. There is an explanation for the dataset in \cite{DNSchallenge2020}. 
+
+For training data, we will get the noisy speech dataset by synthesizing clean speech and noise. The clean speech dataset comes from the public audiobooks dataset called Librivox. It has recordings over 10,000 public domain audiobooks by 11,350 speakers where majority of them are in English. Many of these recordings have excellent speech quality, but still some are of poor speech quality with speech distortion, background noise and reverberation. Thus, DNS Challenge 2020 has filtered the clean speech data based on the speech quality, which is measured by the Mean Opinnion Score (MOS), and chose only the upper quartile with respect to MOS as the clean speech dataset. The resulting dataset has 500 hours of speech from 2150 speakers and all the filtered clips are split into segments of 10 seconds.
+
+The noise clips were selected from Audioset and Freesound. Audioset is a collection of about 2 million human-labeld 10 second sound clips. They are drawn from YouTube videos and belong to about 600 audio events. Since certain audio event classes such as music and speech are overrepresented in the Audioset, DNS Challenge 2020 has tried to balance the dataset by sampling so that each class audio event class has at least 500 clips. Also, DNS Challenge 2020 has removed the clips with any kind of speech activity since speech-like noise can bring out the suppression of speech while the trained model tries to suppress speech-like noise. The resulting noise dataset has about 150 audio classes and 60,000 clips. An additional 10,000 noise clips from Freesound are also augmented to the dataset.
+
+The noisy speech dataset is created by adding clean speech and noise at various SNR levels. (Synthesizing the clean speech and noise : same method as the paper? Or new method?)
+
+Although what we observe in the real world is not perfectly expressed by the synthetic dataset, we take advantage of the synthetic dataset since most of the speech enhancement (SE) models require a clean reference for utilizing objective metrics such as PESQ or STOI.
+
+For the test set, we can use synthetic test dataset which adds the clean speech from the Graz University's clean speech dataset and noise clips from the Audioset and Freesound, which are not present in the training set. Since these synthetic clips come with ground truth references which are the clean speech data, we can evaluate the method using objective metrics such as PESQ and STOI. Whereas for the test set, or `blind' test set, there is no ground truch references provided. We can use this set for the final evaluation using subjective metrics.
+
+
+\section{Evaluation Metric}
+
+STOI stands for a short-time objective intelligence measure. Essentially it measures the average of every correlation coefficient between each of short-time segments of DFT(discrete Fourier transform)-based band for clean speech and the output of noise reduction from the noisy speech input. 
+
+Perceptual Evaluation of Speech Quality (PESQ) is a metric used for obtaining Mean Opinion Scores (MOS) of speech in an audio. This objective metric, ranging from -0.5 to 4.5, measures the quality of an audio based on a sum of disturbances in the audio, and while it is not intended for speech enhanced by noise suppression, we follow \cite{microsoftTeams}, our baseline model, to compare our model’s performance.
+
+SDR or Speech to Distortion Ratio: Distortion is unwanted signal correlated with the input signal. It's absent until the signal appears, and is usually not significant until the signal is occupying most of the dynamic range of the system. This can be a very good metric to track as distortion is something we can reduce and it might lead to clean speech results.
+
+fwSegSNR, Frequency weighted Segmental Signal-to-Noise Ratio, is a generalized short time performance measure. It gives each frequency’s SNR two kinds of weights. First, static frequency weighting that is derived from known psycho-acoustic properties of hearing. Second, dynamic frequency weighting which is related to the speech production mechanism.
+
+\section{Baseline}
+
+We adopt Microsoft Teams as the baseline of our model. Although papers from Microsoft including \cite{microsoftTeams} suggest Microsoft’s research into an extension of the Demucs architecture, the exact model used in Microsoft Teams is not publicly available due to confidentiality of their research.. However, we can still set our model’s baseline as the model used in Microsoft Teams by obtaining the suppressed audio by inputting the audio through their platform. To minimize the noise that could come from recording audio through a microphone, we inject the corrupted audio through a virtual microphone to simulate the inference stage of inputting audio files into Microsoft’s model.
+
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+
+
+
+\end{document}
