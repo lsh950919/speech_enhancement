@@ -23,7 +23,6 @@ coverage.xml*
 .ipynb_checkpoints
 ljspeech
 *.h5
-*.npy
 ./*.wav
 !docker-compose.yml
 /Pipfile
